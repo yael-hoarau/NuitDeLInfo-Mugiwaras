@@ -2,6 +2,21 @@
 require 'structPage.inc.php';
 require 'bd.php';
 start_page();
+$query = 'SELECT * FROM events';
+$result = mysqli_query($link, $query);
+$query1 = 'SELECT pseudo FROM user WHERE email = \'' . $row['author'] . '\'';
+$row1 = mysqli_fetch_assoc(mysqli_query($link, $query1));
+while($row = mysqli_fetch_assoc($result)){
+    ?>
+    <div class="article">
+        <h1><?php echo $row['name'] ?></h1>
+        <h2> Du <?php echo $row['date_start'] ?> au <?php echo $row['date_end'] ?> à <?php echo $row['city'] ?>,
+            <?php echo $row['region'] ?></h2>
+        <?php echo $row['description'] ?>
+        <p class="Signature">Posté par <?php echo $row['date_start'] ?>.</p>
+    </div>
+    <?php
+}
 ?>
     <div class="article">
         <h1><?php ?></h1>
