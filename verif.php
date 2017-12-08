@@ -17,7 +17,7 @@ ini_set('display_errors','On');
             }
             else
             {
-                if (mysqli_num_rows($result) != 0)
+                if (mysqli_num_rows($result) != 0 && $_SESSION['password'] == md5($_POST['password']))
                 {
                     $row = mysqli_fetch_assoc($result);
                     $_SESSION['pseudo'] = $row['pseudo'];
@@ -31,8 +31,25 @@ ini_set('display_errors','On');
             }
         }
         return false;
-    };
+    }
 
-    function verif_inscription(){}
+    function verif_inscription(){
+        if(isset($_POST['email']) && !empty($_POST['email'])){
+            $query = 'SELECT email, password FROM user WHERE email = \'' . $_POST['email'] . '\'';
+            $result = mysqli_query($GLOBALS['link'], $query);
 
-?>
+            if(mysqli_num_rows($result) != 0 ){
+                $_SESSION['alreadyIn'] = true;
+                return false;
+            }
+
+            $query = 'INSERT INTO user VALUES (\'' . $_POST['pseudo'] .'\', \'' . md5($_POST['password'] .
+                    '\', \'' . $_POST['email'] . '\', \'' . $_POST['type'] . '\'') ;
+            $result = mysqli_query($GLOBALS['link'], $query);
+
+            if (!$result)
+                return false;
+            return true;
+        }
+        return false;
+    }
