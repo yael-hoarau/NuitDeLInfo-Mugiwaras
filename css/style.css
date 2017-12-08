@@ -161,3 +161,16 @@ h2 {
     font-size: 1.5vh;
     color: darkgreen;
 }
+
+/* CSS du menu de Connexion */
+form {
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: justify;
+    padding: 5%;
+    margin: 12.5% 25% 12.5% 25%;
+    border-radius: 5%;
+}
+
+form input {
+    right: 5%;
+}
