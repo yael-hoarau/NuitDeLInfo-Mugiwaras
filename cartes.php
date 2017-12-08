@@ -3,62 +3,66 @@ require 'structPage.inc.php';
 start_page();
 ?>
     <div class="article">
-        <h1 color="red">Réaliser un signalement</h1>
-        <table>
-            <tr>
-                <td>
-                    Type signalement
-                </td>
-                <td>
-                    <select id="select">
-                        <option value="bus">Bus</option>
-                        <option value="pieton">Piéton</option>
-                        <option value="velo">Cycliste</option>
-                        <option value="deuxRoue">Deux roues</option>
-                        <option value="camion">Poids lourd</option>
-                        <option value="travaux">Travaux</option>
-                        <option value="sauvage">Animaux sauvages</option>
-                        <option value="betail">Bétail</option>
-                        <option value="cheval">Cheval</option>
-                        <option value="troupeau">Troupeau</option>
-                        <option value="roche">Eboulement</option>
-                        <option value="vitesse">Vitesse réduite</option>
-                        <option value="bouchon">Bouchon</option>
-                        <option value="accident">Accident</option>
-                        <option value="ralentisseur">Ralentisseur</option>
-                        <option value="verglas">Verglas</option>
-                        <option value="vent">Vent</option>
-                        <option value="neige">Neige</option>
-                        <option value="pluie">Pluie</option>
-                        <option value="brouillard">Brouillard</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Description du signalement
-                </td>
-                <td>
-                    <input id="description" type="text" name="description" required><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Lieu du signalement
-                </td>
-                <td>
-                    <input id="address" type="textbox" value="Sydney, NSW">
-                    <input id="submit" type="button" value="Geocode">
-                </td>
-            </tr>
-        </table>
-        Filtrer
-        <form>
-            <input id="normal" type="radio" name="layout" value="normal" checked> Normale<br>
-            <input id="traffic" type="radio" name="layout" value="traffic"> Traffic<br>
-            <input id="transit" type="radio" name="layout" value="transit"> Transports<br>
-            <input id="bike" type="radio" name="layout" value="bike"> Vélo<br>
+        <div id="formSignal">
+            <h1 color="red">Réaliser un signalement</h1><br/>
+            <table>
+                <tr>
+                    <td>
+                        Type signalement
+                    </td>
+                    <td>
+                        <select id="select">
+                            <option value="bus">Bus</option>
+                            <option value="pieton">Piéton</option>
+                            <option value="velo">Cycliste</option>
+                            <option value="deuxRoue">Deux roues</option>
+                            <option value="camion">Poids lourd</option>
+                            <option value="travaux">Travaux</option>
+                            <option value="sauvage">Animaux sauvages</option>
+                            <option value="betail">Bétail</option>
+                            <option value="cheval">Cheval</option>
+                            <option value="troupeau">Troupeau</option>
+                            <option value="roche">Eboulement</option>
+                            <option value="vitesse">Vitesse réduite</option>
+                            <option value="bouchon">Bouchon</option>
+                            <option value="accident">Accident</option>
+                            <option value="ralentisseur">Ralentisseur</option>
+                            <option value="verglas">Verglas</option>
+                            <option value="vent">Vent</option>
+                            <option value="neige">Neige</option>
+                            <option value="pluie">Pluie</option>
+                            <option value="brouillard">Brouillard</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Description du signalement
+                    </td>
+                    <td>
+                        <input id="description" type="text" name="description" required><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Lieu du signalement
+                    </td>
+                    <td>
+                        <input id="address" type="textbox" value="Sydney, NSW">
+                        <input id="submit" type="button" value="Geocode">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <form id="filtre">
+            <p>Filtrer</p>
+            <input id="normal" type="radio" name="layout" value="normal" checked>Standard
+            <input id="traffic" type="radio" name="layout" value="traffic">Traffic
+            <input id="transit" type="radio" name="layout" value="transit">Transports
+            <input id="bike" type="radio" name="layout" value="bike">Vélo
         </form>
+        <br/>
         <div id="googleMap" style="width:100%;height:1000px;"></div>
         <script>
             var map;
@@ -214,17 +218,45 @@ start_page();
 
             function geocodeAddress(geocoder, resultsMap) {
                 var address = document.getElementById('address').value;
-                geocoder.geocode({'address': address}, function(results, status) {
-                    if (status === 'OK') {
-                        resultsMap.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                            map: resultsMap,
-                            position: results[0].geometry.location
-                        });
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
+                if(!(address == 'triangle' || address == 'Triangle' || address == 'TRIANGLE')){
+                    geocoder.geocode({'address': address}, function(results, status) {
+                        if (status === 'OK') {
+                            resultsMap.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: resultsMap,
+                                position: results[0].geometry.location
+                            });
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                } else {
+                    resultsMap.setCenter(new google.maps.LatLng(25.002332, -70.999485));
+                    var flightPlanCoordinates = [
+                        {lat: 25.770643, lng: -80.205772},
+                        {lat: 32.318172, lng: -64.832330},
+                        {lat: 18.147498, lng: -66.884079},
+                        {lat: 25.770643, lng: -80.205772}
+                    ];
+                    var flightPath = new google.maps.Polyline({
+                        path: flightPlanCoordinates,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+                    flightPath.setMap(map);
+                    map.setZoom(4);
+                }
+                var imageBounds = {
+                    north: 57.326639,
+                    south: 57.319900,
+                    east: -4.424836,
+                    west: -4.450946
+                };
+
+                overlay = new google.maps.GroundOverlay('n2i/loch_ness.jpg', imageBounds);
+                overlay.setMap(map);
             }
 
             document.getElementById("select").addEventListener("change", function(){
