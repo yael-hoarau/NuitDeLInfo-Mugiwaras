@@ -9,8 +9,8 @@ else {
         echo 'Vos identifiants sont faux';
     else if (!isset($_SESSION['email']))
         echo 'Vous n\'êtes pas connecté';?>
-    <h1>CONNEXION</h1>
     <form action="connexion.php" method="post">
+        <h1>CONNEXION</h1>
         e-mail : <input type="email" name="email"><br>
         Mot de passe : <input type="password" name="pwd"><br>
         <input type="submit" value="Se connecter">
