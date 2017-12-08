@@ -24,7 +24,6 @@ nav li a {
     padding:4px;
     text-decoration:none;
     color: white;
-    background-color: white;
 }
 
 nav li a:active{
@@ -59,6 +58,6 @@ nav li a:hover {
 }
 
 .active{
-    background-color: orange;
+    background-color: darkred;
     color: white;
 }
