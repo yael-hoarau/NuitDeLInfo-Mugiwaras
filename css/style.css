@@ -118,3 +118,46 @@ li {
     display: inline;
     list-style: none;
 }
+
+table {
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%
+}
+table tr td{
+    padding: 1% 5% 1% 5%;
+    vertical-align: middle;
+}
+#formSignal {
+    background-color: rgba( 255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 5%;
+}
+
+/* Radio */
+
+iframe {
+    right: 0;
+    clear: both;
+    position: fixed;
+    margin-top: 5%;
+}
+#br {
+    line-height: 3000px;
+}
+
+/* CSS page 3 */
+
+.Signature {
+    font-style: italic;
+    float: right;
+    vertical-align: bottom;
+    font-size: 1.5vh;
+    color: darkcyan;
+}
+
+h2 {
+    font-style: italic;
+    font-size: 1.5vh;
+    color: darkgreen;
+}

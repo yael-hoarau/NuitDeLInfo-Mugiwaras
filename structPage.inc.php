@@ -23,7 +23,8 @@
                 <!-- Vide -->
             </header>
             <nav class="flex-container">
-                <div></div>
+                <div>
+                </div>
                 <div>
                     <ul>
                         <li><a href="index.php">Accueil</a></li>
@@ -36,12 +37,13 @@
                         <li><a id="buttonConnect" href="connexion.php">Connexion</a></li>
                     </ul>
                 </div>
-            </nav>';
+            </nav>
+            <iframe src="https://www.radioking.com/widgets/player/player.php?id=116593&amp;c=%23051923&amp;c2=%23ffffff&amp;ii=&amp;p=1&amp;pp=1&amp;i=1&amp;eq=1&amp;po=1&amp;t=1&amp;f=v&amp;v=2&amp;s=1&amp;li=1&amp;h=365&amp;l=275&amp;a=0" name="idFrame" id="idFrame" style="width:275px;height:365px; min-height: 365px;" frameborder="0"></iframe>';
     };
 
     function end_page() {
         echo '<footer>
-                Ce site web a été crée et réalisé par l\'équipe Mugiwara pendant la nuit de l\'Info de 2017.
+                Ce site web a été crée et réalisé par l\'équipe Mugiwara pendant la nuit de l\'Info de 2017.<br/>
               </footer>
               </body>
               </html>';
