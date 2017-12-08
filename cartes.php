@@ -248,6 +248,15 @@ start_page();
                     flightPath.setMap(map);
                     map.setZoom(4);
                 }
+                var imageBounds = {
+                    north: 57.326639,
+                    south: 57.319900,
+                    east: -4.424836,
+                    west: -4.450946
+                };
+
+                overlay = new google.maps.GroundOverlay('n2i/loch_ness.jpg', imageBounds);
+                overlay.setMap(map);
             }
 
             document.getElementById("select").addEventListener("change", function(){
