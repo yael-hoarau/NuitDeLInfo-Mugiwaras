@@ -1,39 +1,59 @@
-body{
-    padding: 0;
-    margin: 0;
+/* CSS du body */
+
+body {
+    background-color: white;
+    text-align: justify;
+    color: #000000;
+    margin: 0%;
+    padding: 0%;
+    background:url("../background2.jpg") center no-repeat fixed;
+    background-size: cover;
+}
+
+/* CSS du nav */
+
+nav {
+    color: #000000;
+    width: 100%;
 }
 
 nav ul {
-    margin:0 auto;
-    padding: 0;
+    list-style-type: none;
+    margin: 0%;
+    overflow: hidden;
     text-align: center;
-    width: auto;
 }
 
 nav li {
-    display: inline;
-    list-style: none;
+    display: inline-block;
 }
 
 nav li a {
-    display:inline-block;
-    margin-right: -5px;
-    width:120px;
-    font-weight:bold;
-    text-align:center;
-    padding:4px;
-    text-decoration:none;
-    color: white;
+    display: block;
+    color: #FFFFFF;
+    padding: 2vh;
+    text-decoration: none;
+    width: 120px;
+    margin-right: -0.21em;
 }
 
-nav li a:active{
-    background-color: darkred;
+.active {
+    background-image: linear-gradient(60deg, #800000, #DC143C);
 }
 
 nav li a:hover {
-    background-color: darkred;
+    background-image: linear-gradient(60deg, #800000, #DC143C);
+    text-decoration: none;
     color: white;
-    text-decoration:none;
+}
+
+#buttonConnect {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+
+#buttonConnect:hover {
+    background-image: linear-gradient(0deg, black, black);
 }
 
 .flex-container {
@@ -44,20 +64,57 @@ nav li a:hover {
 
 .flex-container>div {
     width: 50%;
-    height: 2em;
 }
 
 .flex-container>div:first-child {
     width: 20%;
-    height: 2em;
 }
 
 .flex-container>div:last-child {
     width: 20%;
-    height: 2em;
 }
 
-.active{
-    background-color: darkred;
-    color: white;
+/* CSS des articles au centre */
+
+.main {
+    text-align: justify;
+}
+
+.article {
+    margin: 5% 25% 5% 25%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2% 3% 2% 3%;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3vh;
+}
+
+/* CSS du Footer */
+
+footer
+{
+    background-color: black;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    padding: 1%;
+    margin: 0;
+    bottom: 0;
+}
+
+/* CSS page 2*/
+
+ul {
+    margin:0 auto;
+    padding: 0;
+    text-align: center;
+    width: auto;
+}
+
+li {
+    display: inline;
+    list-style: none;
 }
